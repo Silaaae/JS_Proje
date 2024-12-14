@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Preview</title>
+  <style>
+    /* Styling for the preview box */
+    #image {
+      width: 300px;
+      height: 200px;
+      border: 1px solid black;
+      line-height: 200px;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Styling for the images */
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.3s ease;
+    }
+
+    /* Highlight image on hover */
+    img:hover {
+      border: 2px solid gray;
+    }
+  </style>
+</head>
+<body>
+  <!-- The preview area -->
+  <div id="image">Hover over an image below to display here.</div>
+  
+  <!-- Real images -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/January_odd-eyed-cat.jpg/300px-January_odd-eyed-cat.jpg" alt="Odd-Eyed Cat" onmouseover="upDate(this)" onmouseout="undo()">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/300px-Golde33443.jpg" alt="Golden Retriever Puppy" onmouseover="upDate(this)" onmouseout="undo()">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ducklings_in_New_Zealand.jpg/300px-Ducklings_in_New_Zealand.jpg" alt="Cute Ducklings" onmouseover="upDate(this)" onmouseout="undo()">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bonsai_IMG_6426.JPG/300px-Bonsai_IMG_6426.JPG" alt="Bonsai Tree" onmouseover="upDate(this)" onmouseout="undo()">
+
+  <!-- JavaScript embedded -->
+  <script>
+    function upDate(previewPic) {
+      // Select the preview area
+      const imageDiv = document.getElementById("image");
+
+      // Update text to the alt of the hovered image
+      imageDiv.innerText = previewPic.alt;
+
+      // Update the background image to the src of the hovered image
+      imageDiv.style.backgroundImage = `url(${previewPic.src})`;
+    }
+
+    function undo() {
+      // Select the preview area
+      const imageDiv = document.getElementById("image");
+
+      // Reset the background image
+      imageDiv.style.backgroundImage = "url('')";
+
+      // Reset the text content
+      imageDiv.innerText = "Hover over an image below to display here.";
+    }
+  </script>
+</body>
+</html>
